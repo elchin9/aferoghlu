@@ -1,0 +1,179 @@
+﻿@{
+    @inject IConfiguration _configuration
+     string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    @model Aferoglu.ViewModels.HomeViewModel
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- ========================  Header content ======================== -->
+
+<section class="header-content">
+
+    <div class="owl-slider">
+
+        <!-- === slide item === -->
+
+        @foreach (var p in Model.Slider)
+        {
+            <div class="item" style="background-image:url(../../images/@p.Slider.PhotoUrl)">
+                <div class="box">
+                    <div class="container">
+                        <h2 class="title animated h1" data-animation="fadeInDown">@p.Header</h2>
+                        <div class="animated" data-animation="fadeInUp">
+                            @p.Description
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+    </div>
+    <!--/owl-slider-->
+</section>
+
+<!-- ========================  Icons slider ======================== -->
+
+<section class="owl-icons-wrapper owl-icons-frontpage">
+
+    <!-- === header === -->
+
+    <header class="hidden">
+        <h2>Kateqoriyalar</h2>
+    </header>
+
+    <div class="container">
+
+        <div class="owl-icons">
+
+            <!-- === icon item === -->
+            <!-- === icon item === -->
+            @foreach (var p in Model.Category)
+            {
+                <a asp-controller="Home" asp-action="Shop">
+                    <figure>
+                        <img src="~/images/@p.Category.PhotoUrl" />
+                        <figcaption>@p.Name</figcaption>
+                    </figure>
+                </a>
+            }
+
+        </div>
+        <!--/owl-icons-->
+    </div>
+    <!--/container-->
+</section>
+
+<!-- ========================  Products widget ======================== -->
+
+<section class="products">
+
+    <div class="container">
+
+        <!-- === header title === -->
+
+        <header>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 text-center">
+                    <h2 class="title">@_configuration[$"Products:{_lang}"]</h2>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+
+            <!-- === product-item === -->
+
+            @foreach (var p in Model.Products)
+            {
+                <div class="col-md-4 col-xs-6">
+
+                    <article>
+                        <a asp-controller="Home" asp-action="ShopDetails" asp-route-_lang="@_lang" asp-route-id="@p.ProductId">
+                            <div class="btn btn-add">
+                                <i class="icon icon-cart"></i>
+                            </div>
+                            <div class="figure-grid" style="width:100%;height:100%;">
+                                <div class="image" style="width:100%;height:100%;">
+                                    <img src="~/images/@p.Product.Photos.FirstOrDefault().PhotoURL" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                                <div class="text">
+                                    <h2 class="title h4"><a asp-controller="Home" asp-action="ShopDetails" asp-route-_lang="@_lang" asp-route-id="@p.ProductId">@p.Name</a></h2>
+                                    <sup>@p.Product.Price</sup>
+                                </div>
+                            </div>
+                        </a>
+
+                    </article>
+                </div>
+            }
+
+
+
+        </div>
+        <!--/row-->
+        <!-- === button more === -->
+
+        <div class="wrapper-more">
+            <a asp-controller="Home" asp-action="Shop" asp-route-_lang="@_lang" class="btn btn-main">@_configuration[$"LoadMore:{_lang}"]</a>
+        </div>
+
+        <!--popup-main-->
+    </div>
+    <!--/container-->
+</section>
+
+<!-- ========================  Stretcher widget ======================== -->
+
+<section class="stretcher-wrapper">
+
+
+    <ul class="stretcher">
+
+        @foreach (var n in Model.OurTeam)
+        {
+            <li class="stretcher-item" style="background-image:url(../../assets/images/@n.OurTeam.PhotoURL);">
+                <a asp-controller="Home" asp-action="Service" asp-route-_lang="@_lang" asp-route-id="@n.OurTeamId">
+                    <!--logo-item-->
+                    <!--main text-->
+                    <figure>
+                        <h4>@n.FullName</h4>
+
+                    </figure>
+                </a>
+
+                <!--anchor-->
+            </li>
+        }
+
+      
+
+    </ul>
+</section>
+
+<!-- ========================  Blog Block ======================== -->
+<!-- ========================  Banner ======================== -->
+
+<section class="banner" style="background-image:url(../../assets/images/gallery-4.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 text-center">
+                <h2 class="title">@_configuration[$"OurStory:{_lang}"]</h2>
+                <div class="text">
+                    <p class="custom-about">
+                        @_configuration[$"AboutSix:{_lang}"]..
+                    </p>
+                </div>
+
+                <p><a asp-controller="Home" asp-action="About" asp-route-_lang="@_lang" class="btn btn-clean">@_configuration[$"LoadMore:{_lang}"]</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================  Blog ======================== -->
+<!-- ========================  Instagram ======================== -->

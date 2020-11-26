@@ -1,0 +1,92 @@
+﻿
+@{
+    @inject IConfiguration _configuration
+    string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    @model Aferoglu.ViewModels.ShopViewModel
+}
+
+<!-- ======================== Main header ======================== -->
+
+<section class="main-header" style="background-image:url(../../assets/images/gallery-3.jpg)">
+    <header>
+        <div class="container">
+            <h1 class="h2 title">@_configuration[$"Products:{_lang}"]</h1>
+        </div>
+    </header>
+</section>
+
+<!-- ========================  Icons slider ======================== -->
+
+<section class="owl-icons-wrapper">
+
+    <!-- === header === -->
+
+    <header class="hidden">
+        <h2>Məhsul Kateqoriyaları</h2>
+    </header>
+
+    <div class="container">
+
+        <div class="owl-icons">
+
+            <!-- === icon item === -->
+            @foreach (var p in Model.Categories)
+            {
+                
+            <figure class="category-btn">
+                    <input type="hidden" value="@p.Category.Id" />
+                    <img src="~/images/@p.Category.PhotoUrl" />
+                    <figcaption>@p.Name</figcaption>
+            </figure>
+              
+            }
+
+        </div> <!--/owl-icons-->
+    </div> <!--/container-->
+</section>
+
+<!-- ======================== Products ======================== -->
+
+<section class="products" id="product-area">
+    <div class="container">
+
+        <header class="hidden">
+            <h3 class="h3 title">Product category grid</h3>
+        </header>
+
+        <div class="row">
+
+
+
+            <!--product items-->
+
+            <div class="col-xs-12">
+
+
+                <input type="hidden" id="news-hidden-input" value="@ViewBag.TotalCount" />
+                <input type="hidden" id="lang-hidden-input" value="@_lang" />
+
+
+                <div class="row newsRow mt-3">
+                    <partial name="_ProductPartialView" model="Model.Products" />
+                </div>
+                @if (ViewBag.TotalCount > 10)
+                {
+                    <div class="row mt-5">
+                        <div class="col-12 text-center">
+                            <div class="btn-more btn-news">
+                                <a href="#" class="btn-message">Daha Çox</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div> <!--/product items-->
+
+        </div><!--/row-->
+
+    </div><!--/container-->
+</section>

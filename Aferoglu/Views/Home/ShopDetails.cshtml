@@ -1,0 +1,117 @@
+﻿
+@{
+    @inject IConfiguration _configuration
+    string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    @model ProductLang
+}
+
+<!-- ========================  Main header ======================== -->
+
+<section class="main-header" style="background-image:url(../../assets/images/gallery-2.jpg)">
+    <header>
+        <div class="container">
+            <h1 class="h2 title">@Model.Name</h1>
+        </div>
+    </header>
+</section>
+
+<!-- ========================  Product ======================== -->
+
+<section class="product">
+    <div class="main">
+        <div class="container">
+            <div class="row product-flex">
+
+                <!-- product flex is used only for mobile order -->
+                <!-- on mobile 'product-flex-info' goes bellow gallery 'product-flex-gallery' -->
+
+                <div class="col-md-4 col-sm-12 product-flex-info">
+                    <div class="clearfix">
+
+                        <!-- === product-title === -->
+
+                        <h1 class="title" data-title="@Model.Product.Category.CategoryLangs.FirstOrDefault().Name">@Model.Name</h1>
+
+                        <div class="clearfix">
+
+                            <!-- === price wrapper === -->
+
+                            <div class="price">
+                                <span class="h3">
+                                    @Model.Product.Price
+                                </span>
+                            </div>
+                            <hr />
+
+                            <!-- === info-box === -->
+
+                            <div class="info-box">
+                                <span><strong>@_configuration[$"Producer:{_lang}"]</strong></span>
+                                <span>@Model.Maifacturer</span>
+                            </div>
+
+                            <!-- === info-box === -->
+
+                            <div class="info-box">
+                                <span><strong>@_configuration[$"Info:{_lang}"]</strong></span>
+                                <span>@Model.Description</span>
+                            </div>
+
+                            <!-- === info-box === -->
+
+                            <div class="info-box">
+                                <span><strong>@_configuration[$"InStock:{_lang}"]</strong></span>
+                                @if (Model.Product.IsStock)
+                                {
+                                    <span><i class="fa fa-check-square-o"></i> In stock</span>
+                                }
+                                else
+                                {
+                                    <span><i class="fa fa-truck"></i> Out of stock</span>
+                                }
+
+                            </div>
+
+                            <hr />
+
+                            <!-- === info-box === -->
+
+                            <div class="info-box">
+                                <span>@_configuration[$"Price:{_lang}"]</span>
+                            </div>
+
+
+
+
+                        </div> <!--/clearfix-->
+                    </div> <!--/product-info-wrapper-->
+                </div> <!--/col-md-4-->
+                <!-- === product item gallery === -->
+
+                <div class="col-md-8 col-sm-12 product-flex-gallery">
+
+                    <!-- === add to cart === -->
+
+                    <a href="https://api.whatsapp.com/send?phone=994509902090" target="_blank" class="btn btn-buy" data-text="@_configuration[$"Buy:{_lang}"]"></a>
+
+
+                    <!-- === product gallery === -->
+
+                    <div class="owl-product-gallery">
+                        @foreach (var p in Model.Product.Photos)
+                        {
+                            <img src="~/images/@p.PhotoURL" alt="" height="500" />
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ========================  Product info popup - quick view ======================== -->

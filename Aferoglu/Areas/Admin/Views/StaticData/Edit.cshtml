@@ -1,0 +1,110 @@
+﻿@{
+    @model CreateStaticDataVM
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Contact";
+}
+
+
+<!-- Start Contact Section -->
+
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Site bilgilerini değiştir</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <form method="post" class="mt-4" enctype="multipart/form-data">
+
+
+
+                            <div class="form-group">
+                                <label asp-for="Facebook">Facebook</label>
+                                <input asp-for="Facebook" class="form-control" />
+                                <span asp-validation-for="Facebook" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Instagram">İnstagram</label>
+                                <input asp-for="Instagram" class="form-control" />
+                                <span asp-validation-for="Instagram" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EmailAdress">E-posta</label>
+                                <input asp-for="EmailAdress" class="form-control" />
+                                <span asp-validation-for="EmailAdress" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PhoneNumberOne">Telefon numarası</label>
+                                <input asp-for="PhoneNumberOne" class="form-control" />
+                                <span asp-validation-for="PhoneNumberOne" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PhoneNumberTwo">2 ci telefon numarası</label>
+                                <input asp-for="PhoneNumberTwo" class="form-control" />
+                                <span asp-validation-for="PhoneNumberTwo" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="AddressAZ">Adres (AZ)</label>
+                                <input asp-for="AddressAZ" class="form-control" />
+                                <span asp-validation-for="AddressAZ" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AddressEN">Adres (EN)</label>
+                                <input asp-for="AddressEN" class="form-control" />
+                                <span asp-validation-for="AddressEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AddressRU">Adres (RU)</label>
+                                <input asp-for="AddressRU" class="form-control" />
+                                <span asp-validation-for="AddressRU" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Map">Harita</label>
+                                <input asp-for="Map" class="form-control" />
+                                <span asp-validation-for="Map" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="WorkingHoursAZ">İşləmə saatları (AZ)</label>
+                                <input asp-for="WorkingHoursAZ" class="form-control" />
+                                <span asp-validation-for="WorkingHoursAZ" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="WorkingHoursEN">İşləmə saatları (EN)</label>
+                                <input asp-for="WorkingHoursEN" class="form-control" />
+                                <span asp-validation-for="WorkingHoursEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="WorkingHoursRU">İşləmə saatları (RU)</label>
+                                <input asp-for="WorkingHoursRU" class="form-control" />
+                                <span asp-validation-for="WorkingHoursRU" class="text-danger"></span>
+                            </div>
+
+                            <input type="submit" class="btn-create" value="Değiştir" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Contact Section -->
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

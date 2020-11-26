@@ -1,0 +1,89 @@
+﻿
+
+@{
+    @model CreateSliderVM
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Contact";
+}
+
+
+<!-- Start Contact Section -->
+
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Slider dəyişdir</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <form method="post" class="mt-4" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label asp-for="Photo">Slide şəkli</label>
+
+                                <input asp-for="Photo" accept="image/*" class="form-control" />
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="HeaderAZ">Slide başlığı (AZ)</label>
+
+                                <input asp-for="HeaderAZ" class="form-control" />
+                                <span asp-validation-for="HeaderAZ" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HeaderEN">Slide başlığı (EN)</label>
+
+                                <input asp-for="HeaderEN" class="form-control" />
+                                <span asp-validation-for="HeaderEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HeaderRU">Slide başlığı (RU)</label>
+
+                                <input asp-for="HeaderRU" class="form-control" />
+                                <span asp-validation-for="HeaderRU" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DescriptionAZ">Slide mətni (AZ)</label>
+
+                                <input asp-for="DescriptionAZ" class="form-control" />
+                                <span asp-validation-for="DescriptionAZ" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionEN">Slide mətni (EN)</label>
+
+                                <input asp-for="DescriptionEN" class="form-control" />
+                                <span asp-validation-for="DescriptionEN" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionRU">Slide mətni (RU)</label>
+
+                                <input asp-for="DescriptionRU" class="form-control" />
+                                <span asp-validation-for="DescriptionRU" class="text-danger"></span>
+                            </div>
+
+
+                            <input type="submit" class="btn-create" value="Dəyişdir" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Contact Section -->
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

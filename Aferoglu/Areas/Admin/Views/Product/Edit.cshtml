@@ -1,0 +1,134 @@
+﻿
+
+@{
+    @model CreateProductVM
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Contact";
+}
+
+
+<!-- Start Contact Section -->
+
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Məhsul düzəlt</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <form method="post" class="mt-4" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label asp-for="AllPhotos">Şəkil</label>
+
+                                <input asp-for="AllPhotos" accept="image/*" class="form-control" multiple />
+                                <span asp-validation-for="AllPhotos" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameAZ">Ad (AZ)</label>
+
+                                <input asp-for="NameAZ" class="form-control" />
+                                <span asp-validation-for="NameAZ" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameEN">Ad (EN)</label>
+
+                                <input asp-for="NameEN" class="form-control" />
+                                <span asp-validation-for="NameEN" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameRU">Ad (RU)</label>
+
+                                <input asp-for="NameRU" class="form-control" />
+                                <span asp-validation-for="NameRU" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DescriptionAZ">Haqqında (AZ)</label>
+
+                                <input asp-for="DescriptionAZ" class="form-control" />
+                                <span asp-validation-for="DescriptionAZ" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionEN">Haqqında (EN)</label>
+
+                                <input asp-for="DescriptionEN" class="form-control" />
+                                <span asp-validation-for="DescriptionEN" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DescriptionRU">Haqqında (RU)</label>
+
+                                <input asp-for="DescriptionRU" class="form-control" />
+                                <span asp-validation-for="DescriptionRU" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="MaifacturerAZ">İstehsalçı (AZ)</label>
+
+                                <input asp-for="MaifacturerAZ" class="form-control" />
+                                <span asp-validation-for="MaifacturerAZ" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MaifacturerEN">İstehsalçı (EN)</label>
+
+                                <input asp-for="MaifacturerEN" class="form-control" />
+                                <span asp-validation-for="MaifacturerEN" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MaifacturerRU">İstehsalçı (RU)</label>
+
+                                <input asp-for="MaifacturerRU" class="form-control" />
+                                <span asp-validation-for="MaifacturerRU" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Price">Qiymət</label>
+
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId">Kateqoriya</label>
+                                <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Category,"CategoryId","Name"))" style="width:100%; padding: 10px;"></select>
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsStock">Stokda var ?</label>
+
+                                <input asp-for="IsStock" class="form-control" />
+                                <span asp-validation-for="IsStock" class="text-danger"></span>
+
+                            </div>
+                            <input type="submit" class="btn-create" value="Dəyişdir" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Contact Section -->
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

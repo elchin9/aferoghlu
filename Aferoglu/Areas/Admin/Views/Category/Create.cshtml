@@ -1,0 +1,65 @@
+﻿
+@{
+    @model CreateCategoryVM
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create";
+}
+
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Kateqoriya Yarat</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <form method="post" class="mt-4" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label asp-for="Photo">Kateqoriya şəkli</label>
+
+                                <input asp-for="Photo" accept="image/*" class="form-control" />
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="NameAZ">Kateqoriya adı (AZ)</label>
+
+                                <input asp-for="NameAZ" accept="image/*" class="form-control" />
+                                <span asp-validation-for="NameAZ" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameEN">Kateqoriya adı (EN)</label>
+
+                                <input asp-for="NameEN" accept="image/*" class="form-control" />
+                                <span asp-validation-for="NameEN" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameRU">Kateqoriya adı (RU)</label>
+
+                                <input asp-for="NameRU" accept="image/*" class="form-control" />
+                                <span asp-validation-for="NameRU" class="text-danger"></span>
+
+                            </div>
+
+                            <input type="submit" class="btn-create" value="Yarat" />
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-4"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

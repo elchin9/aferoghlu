@@ -1,0 +1,63 @@
+﻿
+@{
+                @inject IConfiguration _configuration
+                string _lang = ViewBag.Lang ?? "az";
+                var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+                var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    @model StaticDataLang
+}
+
+@if (Model != null)
+{
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div class="visit-showroom">
+                        <h3>@_configuration[$"Contact:{_lang}"]</h3>
+                        <p>@Model.Address</p>
+                        <span>@Model.WorkingHours</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="map-foot d-flex justify-content-end align-items-center">
+                        <a target="_blank"
+                           href="https://www.google.com/maps?q=40.37849807739258,49.87247848510742&z=17&hl=en">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Baku
+                        </a>
+                    </div>
+                    <div class="phone-area">
+                        <i class="fas fa-phone"></i>
+                        <p>@Model.StaticData.PhoneNumberOne</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-7">
+                    <p>Copyright © 2020 Line in Digital</p>
+                </div>
+                <div class="col-12 col-md-5">
+                    <ul class="d-flex justify-content-end align-items-center">
+                        <li>
+                            <a href="@Model.StaticData.Facebook" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Model.StaticData.Instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProductLang>
+@{
+    @inject IConfiguration _configuration
+    string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+}
+
+@foreach (var p in Model)
+{
+    <div class="col-md-4 col-xs-6">
+
+        <article>
+            <a asp-controller="Home" asp-action="ShopDetails" asp-route-_lang="@_lang" asp-route-id="@p.ProductId">
+                <div class="btn btn-add">
+                    <i class="icon icon-cart"></i>
+                </div>
+                <div class="figure-grid" style="width:100%;height:100%;">
+                    <div class="image" style="width:100%;height:100%;">
+                        <img src="~/images/@p.Product.Photos.FirstOrDefault().PhotoURL" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                    </div>
+                    <div class="text">
+                        <h2 class="title h4"><a asp-controller="Home" asp-action="ShopDetails" asp-route-_lang="@_lang" asp-route-id="@p.ProductId">@p.Name</a></h2>
+                        <sup>@p.Product.Price</sup>
+                    </div>
+                </div>
+            </a>
+
+
+        </article>
+    </div>
+}

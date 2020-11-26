@@ -1,0 +1,125 @@
+﻿@{
+    @inject IConfiguration _configuration
+    string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    @model Aferoglu.ViewModels.AboutViewModel
+    ViewData["Title"] = "About Page";
+}
+
+<!-- ========================  Main header ======================== -->
+
+<section class="main-header main-header-blog" style="background-image:url(../../assets/images/gallery-1.jpg)">
+    <header>
+        <div class="container text-center">
+            <h2 class="h2 title">@_configuration[$"OurStory:{_lang}"]</h2>
+        </div>
+    </header>
+</section>
+
+
+<!-- ================== Banner ================== -->
+
+<section class="banner" style="background-image:url(../../assets/images/gallery-7.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h1 class="h2 title">@_configuration[$"AboutHeader:{_lang}"]</h1>
+                <div class="text">
+                    <img src="~/images/back1.jpg" class="d-block d-md-none" style="width:100%" />
+                    <p class="custom-about mt-2">
+                        @_configuration[$"AboutSix:{_lang}"]
+                    </p>
+                    <p class="custom-about">
+                        @_configuration[$"AboutOne:{_lang}"]
+                    </p>
+                    <p class="custom-about">
+                        @_configuration[$"AboutTwo:{_lang}"]
+                    </p>
+                    <img src="~/images/back2.jpg" class="d-block d-md-none" style="width:100%" />
+                    <p class="custom-about mt-2">
+                        @_configuration[$"AboutThree:{_lang}"]
+                    </p>
+                    <p class="custom-about">
+                        @_configuration[$"AboutFour:{_lang}"]
+                    </p>
+                    <p class="custom-about">
+                        @_configuration[$"AboutFive:{_lang}"]
+                    </p>
+                    <br />
+                    <p class="custom-about" style="font-weight:bold;">
+                        @_configuration[$"AboutSeven:{_lang}"]
+                    </p>
+                    <img src="~/images/back3.jpg" class="d-block d-md-none" style="width:100%" />
+                    <ul style="list-style-type:disc" class="mt-2">
+                        <li>
+                            @_configuration[$"AboutLiOne:{_lang}"]
+                        </li>
+                        <li>
+                            @_configuration[$"AboutLiTwo:{_lang}"]
+                        </li>
+                        <li>
+                            @_configuration[$"AboutLiThree:{_lang}"]
+                        </li>
+                        <li>
+                            @_configuration[$"AboutLiFour:{_lang}"]
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 d-none d-md-block">
+                <ul class="img-abouts">
+                    <li>
+                        <img src="~/images/back1.jpg" style="width:70%;"/>
+                    </li>
+                    <li>
+                        <img src="~/images/back2.jpg" style="width:70%;margin-top: 10px;" />
+                    </li>
+                    <li>
+                        <img src="~/images/back3.jpg" style="width:70%;margin-top: 10px;" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ======================== Quotes ======================== -->
+
+<section class="quotes quotes-slider" style="background-image:url(../../assets/images/gallery-2.jpg)">
+    <div class="container">
+        <div class="row">
+
+            <div class="quote-carousel">
+
+                @foreach (var p in Model.Testimonials)
+                {
+                    <!-- === quoute item === -->
+
+                    <div class="quote">
+                        <div class="image">
+                            <img src="~/images/@p.Testimonials.PhotoURL" alt="" />
+                        </div>
+                        <div class="text">
+                            <h4>@p.FullName</h4>
+                            <p>@p.Description</p>
+                        </div>
+                        <div class="more">
+                            <div class="rating">
+                                <span class="icon icon-star"></span>
+                                <span class="icon icon-star"></span>
+                                <span class="icon icon-star"></span>
+                                <span class="icon icon-star"></span>
+                                <span class="icon icon-star"></span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div> <!--/quote-carousel-->
+        </div> <!--/row-->
+    </div> <!--/container-->
+</section>

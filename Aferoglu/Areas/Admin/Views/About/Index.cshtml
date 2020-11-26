@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model AboutLang
+<!-- MAIN CONTENT-->
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Haqqımızda</h3>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6">
+
+                        <div class="my-frame-about">
+                            <img src="~/images/@Model.About.PhotoURL" style="width:100%;" />
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <p style="width:100%;">@Model.Description</p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" text-center">
+                            <a asp-controller="About" asp-action="Edit" asp-route-id="@Model.About.Id" style="color:#fff;" class="btn-create">Dəyişdir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

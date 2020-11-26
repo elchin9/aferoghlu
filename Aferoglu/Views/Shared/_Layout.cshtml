@@ -1,0 +1,148 @@
+﻿@inject IConfiguration _configuration
+
+@{ 
+    string _lang = ViewBag.Lang ?? "az";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Mobile Web-app fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Meta tags -->
+    <meta name="description" content="Afəroğlu - Ofis mebeli">
+    <meta name="author" content="Alchin">
+    <link rel="icon" href="~/assets/images/favicon.png">
+
+    <!--Title-->
+    <title>Afəroğlu - Mebel</title>
+
+    <!--CSS bundle -->
+    <link rel="stylesheet" media="all" href="~/css/reset.css" />
+    <link rel="stylesheet" media="all" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" media="all" href="~/css/bundle.min.css" />
+    <link rel="stylesheet" media="all" href="~/css/style.css" />
+
+
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+
+        <!--Header Section-->
+        <header id="navbar-header">
+            <div class="header-foot">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-4 col-md-2">
+                            <a asp-controller="Home" asp-action="Index" asp-route-_lang="@_lang">
+                                <div class="logo">
+                                    <img src="~/assets/images/cropped-Logo-Yeni-ag-1-2.png" alt="" />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-none d-lg-block col-6 col-md-9">
+                            <div class="lang-menu d-flex align-items-center justify-content-end">
+                                <ul class="d-flex align-items-center menu justify-content-center menu">
+                                    <li>
+                                        <a asp-controller="Home" asp-action="About" asp-route-_lang="@_lang">@_configuration[$"HAQQIMIZDA:{_lang}"]</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Shop" asp-route-_lang="@_lang">@_configuration[$"MƏHSULLAR:{_lang}"]</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Contact" asp-route-_lang="@_lang">@_configuration[$"ƏLAQƏ:{_lang}"]</a>
+                                    </li>
+                                </ul>
+                                <ul class="menu-lang-list d-flex align-items-center justify-content-end">
+                                    <li class="lang-item">
+                                        <a asp-controller="@controller" asp-action="@action" asp-route-_lang="az" class="btn-lang text-white">
+                                            AZ /
+                                        </a>
+                                    </li>
+                                    <li class="lang-item">
+                                        <a asp-controller="@controller" asp-action="@action" asp-route-_lang="en" class="btn-lang text-white">
+                                            EN /
+                                        </a>
+                                    </li>
+                                    <li class="lang-item">
+                                        <a asp-controller="@controller" asp-action="@action" asp-route-_lang="ru" class="btn-lang text-white">
+                                            RU
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                        <div class="col-8 col-md-10">
+                            <div class="hamburger-menu d-flex justify-content-end">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="menu-mobile">
+                                <li>
+                                    <a asp-controller="Home" asp-action="About" asp-route-_lang="@_lang">@_configuration[$"HAQQIMIZDA:{_lang}"]</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="Shop" asp-route-_lang="@_lang">@_configuration[$"MƏHSULLAR:{_lang}"]</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="Contact" asp-route-_lang="@_lang">@_configuration[$"ƏLAQƏ:{_lang}"]</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--End Header Section-->
+
+        @RenderBody()
+
+        <!-- Start Footer -->
+
+        @await Component.InvokeAsync("Social", _lang)
+
+
+        <!-- End Footer -->
+    </div>
+    <!--/wrapper-->
+    <!--JS bundle -->
+    <script src="~/js/jquery.js"></script>
+    <script src="https://kit.fontawesome.com/25d11c4b6d.js" crossorigin="anonymous"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/icons.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+@model CreateAboutVM
+<!-- Start Contact Section -->
+
+<div class="page-container">
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h3>Haqqımızda</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <form method="post" class="mt-4" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label asp-for="Photo">Fotoğraf ekleyin</label>
+
+                                <input asp-for="Photo" accept="image/*" class="form-control" />
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DescriptionAZ">Haqqımızda (AZ)</label>
+                                <input asp-for="DescriptionAZ" class="form-control" />
+                                <span asp-validation-for="DescriptionAZ" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DescriptionEN">Haqqımızda (EN)</label>
+                                <input asp-for="DescriptionEN" class="form-control" />
+                                <span asp-validation-for="DescriptionEN" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="DescriptionRU">Haqqımızda (RU)</label>
+                                <input asp-for="DescriptionRU" class="form-control" />
+                                <span asp-validation-for="DescriptionRU" class="text-danger"></span>
+                            </div>
+
+                            <input type="submit" class="btn-create" value="Dəyişdir" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- End Contact Section -->
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
